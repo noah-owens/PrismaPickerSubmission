@@ -1,0 +1,62 @@
+﻿<!-- Index view iterates through the Glass database table and constructs itself a row at a time -->
+
+<!-- The IEunumerable<> is what makes the looping possible -->
+@model IEnumerable<PrismaPicker.Models.Glass>
+
+<h1>Index</h1>
+
+<!-- Removed due to issues with primary key constraints -->
+@*<a asp-action="Create" >Add a Product</a>*@
+
+<form asp-controller="Glass" asp-action="Index" method="get">
+    <p>
+        <input type="text" name="Search" />
+        <input type="submit" value="Search" />
+    </p>
+</form>
+
+<table class="table">
+    <!-- thead  -->
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Sku)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Color)
+            </th>
+            <th>
+                Purchase This Glass
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+<!-- Construct a new row for each item in the Enumerable Model -->
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sku)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td id="colorTd">
+                @Html.DisplayFor(modelItem => item.Color)
+            </td>
+            <td>
+                <a href="https://oceansidecompatible.com/collections/sheet-glass/products/@item.Link">@Html.DisplayFor(modelItem => item.Link)</a>
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

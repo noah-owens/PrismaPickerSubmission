@@ -1,0 +1,32 @@
+﻿@model Login;
+
+<h1>Log In</h1>
+
+<form asp-controller="Account" asp-action="Login" method="post">
+    <div class="col-8">
+        <!-- Username Entry -->
+        <div>
+            <label asp-for="Username"></label>
+            <input asp-for="Username" />
+        </div>
+
+        <div>
+            <label asp-for="Pass"></label>
+            <input asp-for="Pass" />
+        </div>
+
+        <!-- Remember Me not implemented -->
+@*        <div>
+            <label asp-for="Remember"></label>
+            <input asp-for="Remember" />
+        </div>
+*@
+        <input type="submit" value="Login" />
+    </div>
+    <div class="col-4">
+        <!-- Displays Validation Issues from Login model -->
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    </div>
+
+    <p class="m-2">Please contact an admin to <a asp-controller="Account" asp-action="Register">register</a> for an account.</p>
+</form>

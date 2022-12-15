@@ -1,0 +1,63 @@
+﻿<!-- Details view is probably my favorite view in the whole project it took a lot to get to this -->
+
+@model PrismaPicker.Models.Glass
+
+<script src="~/js/details.js"></script>
+
+<h1>Details</h1>
+
+<div>
+    <h4>Glass</h4>
+
+    <!-- Sample Color Bar presents a taste of the glass, is colored to match the hex-code of this glass -->
+    <hr id="sampleColorBar" />
+    
+    <!-- Table contains Glass model information presented concisely -->
+    <dl class="row">
+
+        <!-- SKU -->
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Sku)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Sku)
+        </dd>
+
+        <!-- Name -->
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <!-- Color (Hex Code) -->
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Color)
+        </dt>
+        <dd id="colorString" class="col-sm-10">
+            @Html.DisplayFor(model => model.Color)
+        </dd>
+
+        <!-- Link (The part that gets put after the link stem to get to product page) -->
+        <dt class="col-sm-2">
+            Product Link
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Link)
+        </dd>
+
+        <!-- Color sample block -->
+        <dt class="col-sm-2">
+            Color Sample:
+        </dt>
+        <dd class="col-sm-10">
+            <!-- This feels like such a messy solution, but it feels like ingenuity to me I never figured out what was causing my problem, but I did solve it. -->
+            <div id="sampleColorBlock" style="width: 100px; height: 100px;border: 100px solid;"></div>
+        </dd>
+    </dl>
+</div>
+
+<div class="mt-2">
+    <a asp-action="Index">Back to List</a>
+</div> 
